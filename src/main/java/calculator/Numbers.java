@@ -6,21 +6,18 @@ import java.util.stream.Collectors;
 
 public class Numbers {
     private final List<Number> inputs;
-    private int result;
-
-    public Numbers(String input) {
-        this.inputs = split(input);
-        this.result = 0;
-    }
+    private int result = 0;
 
     public Numbers(List<Number> numbers) {
         this.inputs = numbers;
     }
 
+    public Numbers(String input) {
+        this.inputs = split(input);
+    }
+
     public void sum() {
-        for (Number input : inputs) {
-            result += input.getValue();
-        }
+        inputs.forEach(number -> result += number.getValue());
     }
 
     public int result() {
