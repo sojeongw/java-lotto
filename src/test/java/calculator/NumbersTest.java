@@ -10,20 +10,18 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class NumbersTest {
 
     @Test
-    @DisplayName("주어진 숫자를 분리하고 합계를 구한다")
+    @DisplayName("주어진 문자열을 숫자로 분리한다")
     void shouldCreate() {
-        Numbers numbers = new Numbers("1,3:6");
-        numbers.sum();
-
-        assertThat(numbers.result()).isEqualTo(10);
+        Numbers numbers = new Numbers(Arrays.asList(new Number("1"), new Number("3")));
+        assertThat(new Numbers("1,3")).isEqualTo(numbers);
     }
 
     @Test
-    @DisplayName("주어진 숫자를 분리하고 합계를 구한다")
+    @DisplayName("주어진 숫자의 합계를 구한다")
     void shouldSumNumbers() {
-        Numbers numbers = new Numbers(Arrays.asList(new Number("1"), new Number("2")));
+        Numbers numbers = new Numbers("3:5");
         numbers.sum();
 
-        assertThat(numbers.result()).isEqualTo(3);
+        assertThat(numbers.result()).isEqualTo(8);
     }
 }
